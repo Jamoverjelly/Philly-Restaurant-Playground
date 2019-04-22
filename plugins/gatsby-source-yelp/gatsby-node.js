@@ -3,10 +3,7 @@ require("dotenv").config({
 });
 
 const fetch = require("node-fetch");
-const queryString = require("query-string");
 
-const API_URI =
-  "https://api.yelp.com/v3/businesses/search?term=mexican&latitude=39.952583&longitude=-75.165222";
 const AuthStr = `Bearer ${process.env.API_KEY}`;
 
 exports.sourceNodes = (
@@ -20,7 +17,7 @@ exports.sourceNodes = (
 
   // Helper function that processes a venue to match Gatsby's node structure
   const processBusiness = business => {
-    const nodeId = createNodeId(`yelp-business-${business.id}`);
+    const nodeId = createNodeId(`yelp-${business.alias}`);
     const nodeContent = JSON.stringify(business);
     const nodeData = Object.assign({}, business, {
       id: nodeId,
@@ -36,7 +33,7 @@ exports.sourceNodes = (
     return nodeData;
   };
 
-  // Join apiOptions with the Yelp API URL
+  // Store the Yelp API URL
   const apiUrl = `https://api.yelp.com/v3/businesses/search?term=mexican&latitude=39.952583&longitude=-75.165222`;
 
   // Gatsby expects sourceNodes to return a promise

@@ -2,29 +2,9 @@
 // import { graphql } from "gatsby";
 // import Image from "gatsby-image";
 
-// export const query = graphql`
-//   query {
-//     allDataJson {
-//       edges {
-//         node {
-//           businesses {
-//             name
-//             price
-//             rating
-//             categories {
-//               title
-//             }
-//             image_url
-//           }
-//         }
-//       }
-//     }
-//   }
-// `;
-
-// const Restaurant = ({ data }) => {
-//   const restaurant = data.allDataJson;
-
+// export default ({ data }) => {
+//   const restaurant = data.yelpBusiness;
+//   console.log(restaurant);
 //   return (
 //     <div>
 //       <h1>{restaurant.name}</h1>
@@ -42,4 +22,26 @@
 //   );
 // };
 
-// export default Restaurant;
+// export const query = graphql`
+//   query {
+//     yelpBusiness {
+//       name
+//       image_url
+//       url
+//       review_count
+//       categories {
+//         title
+//       }
+//       rating
+//       coordinates {
+//         latitude
+//         longitude
+//       }
+//       price
+//       location {
+//         display_address
+//       }
+//       display_phone
+//     }
+//   }
+// `;

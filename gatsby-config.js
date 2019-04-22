@@ -13,7 +13,6 @@ module.exports = {
     {
       resolve: `gatsby-source-yelp`
     },
-    `gatsby-transformer-json`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`
     // this (optional) plugin enables Progressive Web App + Offline functionality
