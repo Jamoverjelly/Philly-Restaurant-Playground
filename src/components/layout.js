@@ -1,9 +1,9 @@
-import React from "react";
+import { graphql, StaticQuery } from "gatsby";
 import PropTypes from "prop-types";
-import { StaticQuery, graphql } from "gatsby";
-
+import React from "react";
 import Header from "./header";
 import "./layout.css";
+import Map from "./map";
 
 const Layout = ({ children }) => (
   <StaticQuery
@@ -28,6 +28,9 @@ const Layout = ({ children }) => (
           }}
         >
           <main>{children}</main>
+          <aside>
+            <Map />
+          </aside>
           <footer>
             © {new Date().getFullYear()}, Built with
             {` `}

@@ -7,12 +7,13 @@ export default ({ data }) => {
 
   let categStr = ``;
   restaurant.categories.forEach((category, i) => {
-    if (i !== restaurant.categories.length - 1) {
+    if (i < restaurant.categories.length) {
       categStr += `${category.title}, `;
     } else if (category.title.indexOf(categStr) === -1) {
-      categStr += `${category.title} `;
+      categStr += `${category.title}`;
     }
   });
+
   return (
     <Layout>
       <div key={restaurant.alias}>
@@ -22,7 +23,14 @@ export default ({ data }) => {
           alt={restaurant.name}
           style={{ marginRight: "1rem", width: 300 }}
         />
-        <p>{categStr}</p>
+        <p>
+          <strong>Cuisine: </strong>
+          {categStr.slice(0, -2)}
+        </p>
+        <p>
+          <strong>Address: </strong>
+          {restaurant.location.display_address}
+        </p>
         <p>{restaurant.rating}</p>
         <p>{restaurant.price}</p>
       </div>
@@ -54,5 +62,3 @@ export const query = graphql`
     }
   }
 `;
-
-// let str = ``;

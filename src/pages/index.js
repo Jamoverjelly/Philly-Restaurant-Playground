@@ -1,5 +1,5 @@
+import { graphql, Link } from "gatsby";
 import React from "react";
-import { Link, graphql } from "gatsby";
 import Layout from "../components/layout";
 import SEO from "../components/seo";
 
@@ -54,27 +54,3 @@ export const query = graphql`
     }
   }
 `;
-
-// import React from "react";
-// import { graphql } from "gatsby";
-// import Image from "gatsby-image";
-
-// export default ({ data }) => {
-//   const restaurant = data.yelpBusiness;
-//   console.log(restaurant);
-//   return (
-//     <div>
-//       <h1>{restaurant.name}</h1>
-//       <Image
-//         fluid={restaurant.image_url}
-//         alt={restaurant.name}
-//         style={{ float: "left", marginRight: "1rem", width: 150 }}
-//       />
-//       <p>
-//         {restaurant.categories[0].title + `, ` + restaurant.categories[1].title}
-//       </p>
-//       <p>{restaurant.rating}</p>
-//       <p>{restaurant.price}</p>
-//     </div>
-//   );
-// };

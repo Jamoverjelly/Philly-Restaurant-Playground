@@ -4,10 +4,10 @@ require("dotenv").config({
 
 const fetch = require("node-fetch");
 
-const AuthStr = `Bearer ${process.env.API_KEY}`;
+const AuthStr = `Bearer ${process.env.YELP_API_KEY}`;
 
 exports.sourceNodes = (
-  { actions, createNodeId, createContentDigest },
+  { actions, createNodeId, createContentDigest, store, cache },
   configOptions
 ) => {
   const { createNode } = actions;
@@ -55,3 +55,33 @@ exports.sourceNodes = (
       })
   );
 };
+
+// const { createRemoteFileNode } = require(`gatsby-source-filesystem`);
+// exports.onCreateNode = async ({
+//   node,
+//   actions,
+//   createNodeId,
+//   store,
+//   cache
+// }) => {
+//   console.log(node);
+//   const { createNodeField, createNode } = actions;
+//   if (node.internal.type === "YelpBusiness") {
+//     try {
+//       const fileNode = await createRemoteFileNode({
+//         url: node.url,
+//         store,
+//         cache,
+//         createNode,
+//         createNodeId
+//       });
+//       createNodeField({
+//         node,
+//         name: "localFile___NODE",
+//         value: fileNode.id
+//       });
+//     } catch (err) {
+//       console.log(err);
+//     }
+//   }
+// };
