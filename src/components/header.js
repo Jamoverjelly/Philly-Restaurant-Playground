@@ -1,7 +1,7 @@
 import { Link } from "gatsby";
-import Search from "./search";
 import PropTypes from "prop-types";
 import React from "react";
+import Search from "./search";
 
 const Header = ({ siteTitle }) => (
   <header
@@ -15,7 +15,7 @@ const Header = ({ siteTitle }) => (
       style={{
         display: `flex`,
         margin: `0 auto`,
-        maxWidth: 960,
+        maxWidth: 1100,
         padding: `.45em 1.0875em`
       }}
     >

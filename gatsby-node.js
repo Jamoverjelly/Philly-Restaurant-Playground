@@ -1,17 +1,5 @@
 const path = require(`path`);
 
-// exports.onCreateNode = ({ node, getNode, actions }) => {
-//   const { createNodeField } = actions;
-//   if (node.internal.type === `YelpBusiness`) {
-//     const slug = createFilePath({ node, getNode, basePath: `pages` });
-//     createNodeField({
-//       node,
-//       name: `slug`,
-//       value: slug
-//     });
-//   }
-// };
-
 exports.createPages = async function({ actions, graphql }) {
   // Query for restaurant nodes to use in creating pages
   return await graphql(`
@@ -57,3 +45,25 @@ exports.createPages = async function({ actions, graphql }) {
     });
   });
 };
+
+exports.onCreateWebpackConfig = ({ getConfig, stage }) => {
+  const config = getConfig();
+  if (stage.startsWith("develop") && config.resolve) {
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      "react-dom": "@hot-loader/react-dom"
+    };
+  }
+};
+
+// exports.onCreateNode = ({ node, getNode, actions }) => {
+//   const { createNodeField } = actions;
+//   if (node.internal.type === `YelpBusiness`) {
+//     const slug = createFilePath({ node, getNode, basePath: `pages` });
+//     createNodeField({
+//       node,
+//       name: `slug`,
+//       value: slug
+//     });
+//   }
+// };

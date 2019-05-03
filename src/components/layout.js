@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import React from "react";
 import Header from "./header";
 import "./layout.css";
-import Map from "./map";
 
 const Layout = ({ children }) => (
   <StaticQuery
@@ -21,22 +20,21 @@ const Layout = ({ children }) => (
         <Header siteTitle={data.site.siteMetadata.title} />
         <div
           style={{
+            display: `flex`,
+            flexDirection: `row`,
             margin: `0 auto`,
-            maxWidth: 960,
+            maxWidth: 1100,
             padding: `0px 1.0875rem 1.45rem`,
             paddingTop: 0
           }}
         >
-          <main>{children}</main>
-          <aside>
-            <Map />
-          </aside>
-          <footer>
-            © {new Date().getFullYear()}, Built with
-            {` `}
-            <a href="https://www.gatsbyjs.org">Gatsby</a>
-          </footer>
+          {children}
         </div>
+        <footer>
+          © {new Date().getFullYear()}, Built with
+          {` `}
+          <a href="https://www.gatsbyjs.org">Gatsby</a>
+        </footer>
       </>
     )}
   />
